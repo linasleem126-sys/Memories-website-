@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lina & Ziad</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--main:#4a1020;--bg:#fdf2f4;--line:#f2aab8;--card:#ffffff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:#2b2b2b}
+#lock{position:fixed;inset:0;background:radial-gradient(120% 120% at 50% 0%,#8a2540 0%,#2b0a12 70%);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.lock{width:100%;max-width:360px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:28px;padding:32px 28px;text-align:center;color:white;backdrop-filter:blur(18px)}
+.lock h2{font-family:'Playfair Display';font-size:26px;letter-spacing:1px}
+.lock input{width:100%;margin-top:22px;padding:15px;border-radius:14px;border:none;text-align:center;font-size:18px;letter-spacing:6px}
+.lock button{width:100%;margin-top:14px;padding:13px;border:none;border-radius:14px;background:white;color:var(--main);font-weight:800;letter-spacing:2px;cursor:pointer}
+.err{font-size:12px;color:#ffb8c6;margin-top:10px;display:none}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;background:var(--bg)}
+.hero h1{font-family:'Playfair Display';font-size:64px;color:var(--main);font-weight:700;letter-spacing:1px}
+.counter{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;max-width:360px}
+.counter .box{background:var(--card);border:1.5px solid var(--line);border-radius:22px;min-width:96px;padding:16px 10px;text-align:center}
+.counter b{display:block;font-size:28px;color:var(--main);font-weight:800}
+.counter span{display:block;font-size:14px;margin-top:4px;opacity:.7}
+.dates{margin-top:24px;font-size:14px;opacity:.5;letter-spacing:.2px}
+.btn{display:inline-block;border:none;border-radius:30px;padding:14px 36px;font-weight:800;cursor:pointer;text-decoration:none}
+.btn-main{background:var(--main);color:white;font-size:16px}
+#content{display:none}
+.wrap{max-width:640px;margin:0 auto;padding:20px 16px 80px}
+.card{background:var(--card);border:1px solid #f3d6db;border-radius:26px;padding:26px;margin-bottom:18px;box-shadow:0 8px 24px rgba(91,26,42,0.05)}
+.card-title{font-size:19px;font-weight:800;color:var(--main);margin-bottom:16px;font-family:'Playfair Display'}
+.ten{display:grid;gap:10px}
+.ten div{background:#fff0f3;border:1px solid #f3d6db;border-radius:16px;padding:13px 14px;display:flex;gap:12px;align-items:center;font-size:14px}
+.ten i{min-width:28px;height:28px;background:var(--main);color:white;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800}
+.text{white-space:pre-wrap;line-height:2.2;font-size:15px}
+.love-card{background:linear-gradient(180deg,#5b1a2a 0%,#7a2340 100%);color:white;border:none}
+.memory-box{background:#fff0f3;border:1px dashed #f2aab8;border-radius:18px;padding:18px;white-space:pre-wrap;line-height:2.3;font-size:14.5px}
+.small-link{font-size:13px;color:var(--main);opacity:.7;text-decoration:underline;cursor:pointer;letter-spacing:.3px}
+.center{text-align:center}
+.hidden{display:none}
+.divider{height:1px;background:#f3d6db;margin:18px 0}
+</style>
+</head>
+<body>
+
+<!-- اغنية خفية - تشتغل لوحدها من غير زرار -->
+<audio id="bgMusic" loop preload="auto" style="display:none">
+  <source src="kol-hayati.mp3" type="audio/mpeg">
+</audio>
+
+<div id="lock">
+  <div class="lock">
+    <div style="font-size:36px">♡</div>
+    <h2 style="margin-top:8px">Lina & Ziad</h2>
+    <input id="pass" type="password" placeholder="••••••••">
+    <button onclick="unlock()">OPEN</button>
+    <div id="err" class="err">wrong code</div>
+  </div>
+</div>
+
+<div class="hero" id="hero">
+  <h1>Lina & Ziad</h1>
+  <div class="counter" id="counter"></div>
+  <div class="dates">14/11/2023 • 26/04/2024 first I love you</div>
+  <button class="btn btn-main" onclick="showContent()">✨ Click here</button>
+</div>
+
+<div id="content">
+<div class="wrap">
+
+  <div id="ten" class="card">
+    <div class="card-title">10 things i love in you ♥️</div>
+    <div class="ten">
+      <div><i>1</i> انك حنين اوي</div>
+      <div><i>2</i> اني مبهونش عليك ابدا</div>
+      <div><i>3</i> ضحكتك</div>
+      <div><i>4</i> صوتك</div>
+      <div><i>5</i> تفكيرك عامة</div>
+      <div><i>6</i> انك انسان طموح</div>
+      <div><i>7</i> روحك ودمك الخفيف</div>
+      <div><i>8</i> انك زياد عامة</div>
+      <div><i>9</i> انك مبتحبش تشوفني زعلانه</div>
+      <div><i>10</i> انك دائما عايزني كويسه</div>
+    </div>
+  </div>
+
+  <div id="love" class="card love-card">
+    <div class="text">انا عايزه اقولك اني بحبك اوي اوي اوي بجد والله ي زياد ويعني مش محتاجه اقولك اني بحب كل حاجه فيك طريقتك وشكلك وكل حاجه والله ومقدرش اتخيل حياتي مع حد تاني غيرك مهما حصل وحقيقي عندي استعداد اتخانق معاك الف خناقه وازعل منك 1000 مره ولا أن اعيش حياه مثاليه مع حد تاني لأني عايزاك انت وعمري لا حبيت ولا هحب حد غيرك ♥️</div>
+  </div>
+
+  <div class="card center" id="memoriesCard">
+    <button class="btn btn-main" onclick="openMemories()" style="margin:0">our memories 🤍</button>
+    <div id="memoriesText" class="hidden" style="text-align:right;margin-top:20px">
+      <div class="memory-box">فاكر اول مره كلمنا بعض فيها؟ فاكر كنا مبسوطين ازاي أن لقينا حد شبهنا؟
+
+فاكر اول احساس غيره ؟ لما بدأنا نحس أن مش عايزين حد غيرنا يشوفنا أو يتعامل معانا وكنا قايلين هنقفل حياتنا علينا احنا وبس؟
+
+طيب لما كنا مبنكونش طايقين الدروس ولا المدرسين وبنروح عشان نشوف بعض بس
+فاكر ايام المدرسه لما كنا بلبس المدرسه المبهدل دا وكنت تيجي الفصل بتاعي ع تشوفني وانا استخبى ك العاده ع حاسه شكلي مبهدل وتفضل تقنعني اني احلى بنت ب لبس المدرسه 😂
+
+طب فاكر خناقاتنا اني عايزاك تلبس بلوفرات وانت بتحب الهوديز ؟ كانت اقصى خناقه بينا تقريبا 
+
+كنا بنسهر ل تاني يوم مكملين 12 ساعه كلام متواصل ومحدش زهقان من التاني 
+
+لسه فاكره لما كنت بتكون مدايق من الدرس ف تفكك منه وتركز معايا انا 
+
+فاكر لما كانت كل خناقتنا انك عايزني أشيل ايدي من على وشي عشان تشوف ملامحي كامله😂😂😂😂😂😂
+
+لسه فاكره كل لحظه بينا والله، ربنا يدينا طوله العمر ونعمل غيرهم 🤍</div>
+    </div>
+  </div>
+
+  <div class="card center">
+    <span class="small-link" onclick="openApology()">little thing for you 🤍</span>
+    <div id="apology" class="hidden" style="text-align:right;margin-top:18px">
+      <div class="divider"></div>
+      <div class="text">انا اسفه عن الفتره اللي فاتت واسفه عن كل يوم مكناش فيه سوا وكل لحظه كنت محتاجني فيها وملقتنيش وصدقني الحياه من غيرك صعبه اوي ومفيش حاجه تهونها ي زياد والله ♥️
+أن شاء الله معدناش نبعد عن بعض تاني ووعد انا هعمل كل اللي عليا عشان نفضل مع بعض لاخر العمر ♥️</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const music = document.getElementById('bgMusic');
+function unlock(){
+  const v=document.getElementById('pass').value.trim();
+  if(v==="14112023"||v==="14/11/2023"||v==="1411"){
+    document.getElementById('lock').style.display='none';
+    count();
+    // شغل الأغنية أول ما يفتح
+    music.play().catch(()=>{});
+  }else{document.getElementById('err').style.display='block'}
+}
+function count(){
+  const s=new Date("2023-11-14");const n=new Date();const diff=Math.floor((n-s)/86400000);
+  const y=Math.floor(diff/365);const m=Math.floor((diff%365)/30);const d=diff%30;
+  document.getElementById('counter').innerHTML=`
+    <div class="box"><b>${d}</b><span>يوم</span></div>
+    <div class="box"><b>${m}</b><span>شهر</span></div>
+    <div class="box"><b>${y}</b><span>سنة</span></div>
+    <div class="box"><b>${diff}</b><span>يوم سوا</span></div>`;
+}
+function showContent(){
+  document.getElementById('content').style.display='block';
+  document.getElementById('ten').scrollIntoView({behavior:'smooth'});
+  music.play().catch(()=>{});
+}
+function openMemories(){
+  document.getElementById('memoriesText').classList.remove('hidden');
+  document.getElementById('memoriesText').scrollIntoView({behavior:'smooth'});
+}
+function openApology(){
+  document.getElementById('apology').classList.remove('hidden');
+  document.getElementById('apology').scrollIntoView({behavior:'smooth'});
+}
+document.getElementById('pass').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+// لو المتصفح منع التشغيل التلقائي، شغليها مع أول لمسة
+document.body.addEventListener('click',()=>{ music.play().catch(()=>{}); },{once:true});
+count();
+</script>
+</body>
+</html>
